@@ -1,0 +1,43 @@
+<html>
+<head>
+<style>
+
+.centered {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+</head>
+
+<body bgcolor="#000000">
+
+<div align="center"><img width="100%" height="100%" src="" alt="world" name="world" id="world"></div>
+<div class="centered"><font size="6"  color="green"><p align="center" id="digiclock">Clock</p></font></div>
+
+<script>
+function fn1() {
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+var ladate=new Date();var d=ladate.getDay();var h=ladate.getHours();var m=ladate.getMinutes();
+var day=ladate.getDate();var mon=ladate.getMonth();var year =ladate.getFullYear();mon = mon + 1;
+mm=m.toString();hh=h.toString();dd=day.toString();md=mon.toString();
+
+if (mm.length == 1) { mm = "0" + mm; }; if (hh.length == 1) { hh = "0" + hh; }
+if (dd.length == 1) { dd = "0" + dd; }; if (md.length == 1) { md = "0" + md; }
+
+clock = days[d]+" "+dd+"/"+md+"/"+year+" </br>  "+hh+' h : '+mm+' m';
+op = "https://www.timeanddate.com/scripts/sunmap.php?iso="+year + dd + md + "T" +hh+mm+"&earth=1";
+document.getElementById('digiclock').innerHTML = clock
+document.getElementById('world').src = op
+}
+
+setInterval(function() { fn1(); }, 60 * 1000);
+
+window.onload = function() { fn1(); };
+
+</script>
+
+</body>
+<html>
